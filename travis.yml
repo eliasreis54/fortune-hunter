@@ -9,4 +9,5 @@ install:
   - cd backend && npm install
 
 script:
+  - cd backend && npm run lint
   - cd backend && npm test
