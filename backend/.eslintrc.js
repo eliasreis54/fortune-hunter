@@ -15,5 +15,6 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    "arrow-parens": [1, "as-needed", { "requireForBlockBody": false }],
   },
 };
