@@ -15,6 +15,7 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    "semi": ["error", "never"],
     "arrow-parens": [1, "as-needed", { "requireForBlockBody": false }],
   },
 };

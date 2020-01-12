@@ -1,5 +1,3 @@
-const CreatureType = require('./CreatureType');
-
 module.exports = (sequelize, DataTypes) => {
   const Cards = sequelize.define('Cards', {
     name: {
@@ -21,8 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+  }, {
+    tableName: 'cards',
+    timestamps: true,
+    updatedat: 'updatetimestamp',
   });
 
-  Cards.belongsTo(CreatureType);
+  Cards.associate = models => Cards.belongsTo(models.CreatureTypes, { foreignKey: 'creatureTypes_id' });
   return Cards;
 };

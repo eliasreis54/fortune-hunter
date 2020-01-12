@@ -2,9 +2,17 @@ const Card = require('./Cards');
 const GamePlayer = require('./GamePlayer');
 
 module.exports = (sequelize, DataTypes) => {
-  const GamePlayerCard = sequelize.define('game-player-cards', {
+  const GamePlayerCards = sequelize.define('GamePlayerCards', {
+  }, {
+    tableName: 'game_player_cards',
+    timestamps: true,
+    createdAt: true,
+    updatedAt: 'updateTimestamp',
   });
-  GamePlayerCard.belongsTo(Card);
-  GamePlayerCard.belongsTo(GamePlayer);
-  return DeckCards;
+
+  GamePlayerCards.associate = models => {
+    GamePlayerCards.belongsTo(models.Cards);
+    GamePlayerCards.belongsTo(models.GamePlayer);
+  };
+  return GamePlayerCards;
 };
