@@ -10,6 +10,8 @@ const checkIfIdIsNull = id => R.pipe(
   R.then(R.isNil),
 )(id)
 
+const getCarIdFromRequest = req => R.path(['params', 'id'], req)
+
 cardRouter.get('/cards', (req, res) => cardRepository.fetchAll()
   .then(data => res.json(data))
   .catch(err => res.status(400).json(err)))
@@ -24,7 +26,7 @@ cardRouter.post('/cards', (req, res) => {
 
 
 cardRouter.put('/cards/:id', (req, res) => {
-  const cardId = R.path(['params', 'id'], req)
+  const cardId = getCarIdFromRequest(req)
   const cardUpdater = R.path(['body'], req)
   return cardService.update(cardId, cardUpdater)
     .then(data => res.json(data))
@@ -33,7 +35,7 @@ cardRouter.put('/cards/:id', (req, res) => {
 
 
 cardRouter.delete('/cards/:id', async (req, res) => {
-  const cardId = R.path(['params', 'id'], req)
+  const cardId = getCarIdFromRequest(req)
   const exist = R.not(await checkIfIdIsNull(cardId))
   const destroyObject = async () => {
     try {

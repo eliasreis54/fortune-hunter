@@ -10,7 +10,5 @@ module.exports = {
     }),
   ]),
 
-  down: (queryInterface, Sequelize) => Promise.all([
-    queryInterface.removeColumn('cards', 'creatureTypes_id'),
-  ]),
+  down: (queryInterface, Sequelize) => queryInterface.removeColumn('cards', 'creatureTypes_id'),
 };
