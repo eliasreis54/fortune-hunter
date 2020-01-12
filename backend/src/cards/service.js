@@ -2,15 +2,15 @@ const { Cards } = require('../db/models')
 
 const create = card => Cards.create(card)
 
-const destroy = cardId => Cards.destroy({
+const destroy = id => Cards.destroy({
   where: {
-    id: cardId,
+    id,
   },
 })
 
-const update = (cardId, card) => Cards.update(card, {
+const update = (id, card) => Cards.update(card, {
   where: {
-    id: cardId,
+    id,
   },
 })
 

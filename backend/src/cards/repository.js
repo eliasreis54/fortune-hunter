@@ -1,7 +1,9 @@
 const { Cards } = require('../db/models')
 
 const findById = id => Cards.findOne({
-  where: id,
+  where: {
+    id,
+  },
 })
 
 const fetchAll = () => Cards.findAll()
