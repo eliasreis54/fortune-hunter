@@ -6,9 +6,10 @@
   "scripts": {
     "migration:generate": "./node_modules/.bin/sequelize migration:generate --name",
     "migration:run": "./node_modules/.bin/sequelize db:migrate",
-    "test": "jest --passWithNoTests",
     "lint": "./node_modules/.bin/eslint .",
-    "lint:fix": "./node_modules/.bin/eslint . --fix"
+    "lint:fix": "./node_modules/.bin/eslint . --fix",
+    "test": "source ./scripts/start-pg.sh; npm run test:only; ./scripts/stop-pg.sh; ./scripts/clean-pg.sh",
+    "test:only": "npm run migration:run && jest"
   },
   "husky": {
     "hooks": {
