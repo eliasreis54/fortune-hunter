@@ -1,10 +1,14 @@
-const Card = require('./Cards');
-const Deck = require('./Deck');
-
 module.exports = (sequelize, DataTypes) => {
-  const DeckCards = sequelize.define('deck-cards', {
+  const DeckCards = sequelize.define('DeckCards', {
+  }, {
+    tableName: 'deck_cards',
+    timestamps: true,
+    createdAt: true,
+    updatedAt: 'updateTimestamp',
   });
-  DeckCards.belongsTo(Card);
-  DeckCards.belongsTo(Deck);
+  DeckCards.associate = models => {
+    DeckCards.belongsTo(models.Cards);
+    DeckCards.belongsTo(models.Deck);
+  };
   return DeckCards;
 };

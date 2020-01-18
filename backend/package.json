@@ -6,9 +6,9 @@
   "scripts": {
     "migration:generate": "./node_modules/.bin/sequelize migration:generate --name",
     "migration:run": "./node_modules/.bin/sequelize db:migrate",
-    "test": "jest --passWithNoTests",
     "lint": "./node_modules/.bin/eslint .",
-    "lint:fix": "./node_modules/.bin/eslint . --fix"
+    "lint:fix": "./node_modules/.bin/eslint . --fix",
+    "test": "NODE_ENV=test npm run migration:run && jest"
   },
   "husky": {
     "hooks": {
@@ -18,9 +18,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
+    "ramda": "^0.26.1",
     "sequelize": "^5.21.2"
   },
   "devDependencies": {
@@ -28,6 +30,8 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "jest": "^24.9.0",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2",
+    "sqlite3": "^4.1.1"
   }
 }

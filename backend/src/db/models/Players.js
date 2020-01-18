@@ -1,20 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
   const Players = sequelize.define('Players', {
     name: {
-      type: datatypes.string,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     nick: {
-      type: datatypes.string,
+      type: DataTypes.STRING,
     },
     wins: {
-      type: datatypes.integer,
+      type: DataTypes.INTEGER,
       defaultValue: 0,
     },
     defeats: {
-      type: datatypes.integer,
+      type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+  }, {
+    tableName: 'Players',
+    timestamps: true,
+    createdAt: true,
+    updatedAt: 'updateTimestamp',
   });
   return Players;
 };

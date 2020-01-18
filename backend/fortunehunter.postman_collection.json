@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "919467aa-1279-4221-9db9-8d53109f4495",
+		"name": "fortunehunter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cards",
+			"item": [
+				{
+					"name": "{{URL}}/cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cards",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/cards",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"card1\",\n\t\"coust\": 1,\n\t\"attack\": 123,\n\t\"income\": 321\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/cards",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/cards",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"card1\",\n    \"coust\": 1,\n    \"attack\": 123,\n    \"income\": 321,\n    \"updatedAt\": \"2020-01-12T15:11:17.634Z\",\n    \"createdAt\": \"2020-01-12T15:11:17.634Z\",\n    \"description\": null,\n    \"creatureTypes_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/cards/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cards",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{URL}}/cards",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/cards/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cards",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
