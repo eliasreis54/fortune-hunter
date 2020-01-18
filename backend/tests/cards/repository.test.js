@@ -15,7 +15,7 @@ describe('tests cards repository functions', () => {
 	})
 
 	afterAll(async () => {
-		await db.sequelize.close()
+		await Cards.destroy({ where: { id: {[db.Sequelize.Op.gt]: 0} }, trucate: true, restartIdentity: true })
 	})
 
   test('test if findById return the rigth record', async () => {

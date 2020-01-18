@@ -8,8 +8,7 @@
     "migration:run": "./node_modules/.bin/sequelize db:migrate",
     "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix",
-    "test": "source ./scripts/start-pg.sh; npm run test:only; ./scripts/stop-pg.sh; ./scripts/clean-pg.sh",
-    "test:only": "npm run migration:run && jest"
+    "test": "NODE_ENV=test npm run migration:run && jest"
   },
   "husky": {
     "hooks": {
@@ -24,7 +23,8 @@
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "ramda": "^0.26.1",
-    "sequelize": "^5.21.2"
+    "sequelize": "^5.21.2",
+    "sqlite3": "^4.1.1"
   },
   "devDependencies": {
     "eslint": "^6.6.0",

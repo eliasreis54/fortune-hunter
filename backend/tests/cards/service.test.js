@@ -16,14 +16,13 @@ describe('tests cards repository functions', () => {
 	})
 
 	afterAll(async () => {
-		await db.sequelize.close()
+		await Cards.destroy({ where: { id: {[db.Sequelize.Op.gt]: 0} }, trucate: true, restartIdentity: true })
 	})
 
 
   test('test create card', async () => {
     const created = await cardService.create(card)
-    const records = await cardRepository.fetchAll()
-    expect(records.length).toBe(1)
+    expect(created).not.toBeNull()
   })
 
   test('test if destroy will destroy the correct record', async () => {
@@ -32,5 +31,17 @@ describe('tests cards repository functions', () => {
     const records = await cardRepository.fetchAll()
     expect(records.length).toBe(2)
     await cardService.destroy(1)
+  })
+
+
+  test('test if update will update the correct record', async () => {
+    const created = await cardService.create(card)
+    const newCreated = {
+      ...card,
+      name: 'card',
+    }
+    await cardService.update(created.id, newCreated)
+    const find = await cardRepository.findById(created.id)
+    expect(find.name).toBe('card')
   })
 })

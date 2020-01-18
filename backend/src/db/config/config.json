@@ -7,11 +7,8 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "fortunehunter-test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "sqlite",
+    "storage": "memory"
   },
   "production": {
     "username": "postgres",
