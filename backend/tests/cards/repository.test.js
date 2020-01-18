@@ -18,6 +18,10 @@ describe('tests cards repository functions', () => {
 		await Cards.destroy({ where: { id: {[db.Sequelize.Op.gt]: 0} }, trucate: true, restartIdentity: true })
 	})
 
+  beforeAll(async () => {
+		await Cards.destroy({ where: { id: {[db.Sequelize.Op.gt]: 0} }, trucate: true, restartIdentity: true })
+  })
+
   test('test if findById return the rigth record', async () => {
     const created = await Cards.create(card)
     const finded = await cardRepository.findById(created.id)
